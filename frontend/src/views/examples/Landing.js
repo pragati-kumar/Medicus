@@ -3,7 +3,8 @@
 =========================================================
 
 */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 // nodejs library that concatenates classes
 import classnames from "classnames";
 
@@ -23,6 +24,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import Resizer from "react-image-file-resizer";
 
 // core components
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
@@ -31,15 +33,41 @@ import CardsFooter from "components/Footers/CardsFooter.js";
 // index page sections
 import Download from "../IndexSections/Download.js";
 
+const Compress = require("compress.js");
+const compress = new Compress();
+
 const Landing = (props) => {
   const main = useRef(0);
   const hiddenFileInput = useRef(null);
+  const [uploadedImg, setUploadedImg] = useState(null);
   const handleClick = (event) => {
     hiddenFileInput.current.click();
   };
-  const handleChange = (event) => {
-    const fileUploaded = event.target.files[0];
-    //handle file upload here
+  const handleChange = async (event) => {
+    const actualFile = event.target.files[0];
+    var fileInput = false;
+    if (event.target.files[0]) {
+      fileInput = true;
+    }
+    if (fileInput) {
+      Resizer.imageFileResizer(
+        event.target.files[0],
+        100,
+        100,
+        "JPEG",
+        100,
+        0,
+        (uri) => {
+          let imageurl = URL.createObjectURL(uri);
+          setUploadedImg(imageurl);
+        },
+        "blob",
+        200,
+        200
+      );
+    }
+
+
   };
 
   useEffect(() => {
@@ -68,7 +96,7 @@ const Landing = (props) => {
             <Container className="py-lg-md d-flex">
               <div className="col px-0">
                 <Row>
-                  <Col lg="6">
+                  <Col lg="6" className="mb-5">
                     <h1 className="display-3 text-white">
                       Your very own diagnostic tool{" "}
                     </h1>
@@ -102,12 +130,23 @@ const Landing = (props) => {
                         type="file"
                         ref={hiddenFileInput}
                         onChange={handleChange}
+                        accept="image/jpeg"
                         style={{ display: "none" }}
                       />
                     </div>
                   </Col>
                   <Col lg="6">
                     <Card className="card-lift--hover shadow border-0">
+                      {uploadedImg ? (
+                        <CardImg
+                          top
+                          className="mx-auto mt-2"
+                          style={{maxWidth:"95%", maxHeight:"20%"}}
+                          src={uploadedImg}
+                          alt="X-ray"
+                        />
+                      ) : null}
+
                       <CardBody className="py-5">
                         <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
                           <i className="ni ni-check-bold" />
