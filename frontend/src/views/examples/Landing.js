@@ -137,7 +137,7 @@ const Landing = (props) => {
                     </div>
                   </Col>
                   <Col lg="6">
-                    <Card className="card-lift--hover shadow border-0">
+                    <Card className=" shadow border-0">
                       {uploadedImg ? (
                         <CardImg
                           top
