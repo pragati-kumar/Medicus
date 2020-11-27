@@ -72,11 +72,13 @@ class DemoNavbar extends React.Component {
             id="navbar-main"
           >
             <Container>
-              <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
+              <NavbarBrand className="mr-lg-5 " to="/" tag={Link}>
                 <img
                   alt="..."
-                  src={require("assets/img/brand/argon-react-white.png")}
+                  className="mt--3"
+                  src={require("assets/img/brand/medicus-logo.png")}
                 />
+                {" "} <span className="display-4" style={{textTransform: "capitalize" }}> Medicus</span>
               </NavbarBrand>
               <button className="navbar-toggler" id="navbar_global">
                 <span className="navbar-toggler-icon" />
@@ -94,7 +96,7 @@ class DemoNavbar extends React.Component {
                       <Link to="/">
                         <img
                           alt="..."
-                          src={require("assets/img/brand/argon-react.png")}
+                          src={require("assets/img/brand/medicus-logo.png")}
                         />
                       </Link>
                     </Col>
