@@ -3,7 +3,7 @@
 =========================================================
 
 */
-import React , {useEffect, useRef}from "react";
+import React, { useEffect, useRef } from "react";
 // nodejs library that concatenates classes
 import classnames from "classnames";
 
@@ -34,11 +34,10 @@ import Download from "../IndexSections/Download.js";
 const Landing = (props) => {
   const main = useRef(0);
 
-    useEffect(()=>{
-      document.documentElement.scrollTop = 0;
-      document.scrollingElement.scrollTop = 0;
-   
-    },[]);
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.scrollingElement.scrollTop = 0;
+  }, []);
 
   return (
     <>
@@ -66,8 +65,8 @@ const Landing = (props) => {
                       Your very own diagnostic tool{" "}
                     </h1>
                     <p className="lead text-white">
-                      Just upload a picture of a Chest X-ray to get a
-                      diagnosis from our highly accurate Deep Learning Model
+                      Just upload a picture of a Chest X-ray to get a diagnosis
+                      from our highly accurate Deep Learning Model
                     </p>
                     <div className="btn-wrapper">
                       <Button
@@ -88,9 +87,7 @@ const Landing = (props) => {
                         <span className="btn-inner--icon mr-1">
                           <i className="ni ni-cloud-upload-96" />
                         </span>
-                        <span className="btn-inner--text">
-                          Upload an X-ray
-                        </span>
+                        <span className="btn-inner--text">Upload an X-ray</span>
                       </Button>
                     </div>
                   </Col>
@@ -101,11 +98,11 @@ const Landing = (props) => {
                           <i className="ni ni-check-bold" />
                         </div>
                         <h6 className="text-primary text-uppercase">
-                          Download Argon
+                          Your X-ray Report
                         </h6>
                         <p className="description mt-3">
-                          Argon is a great free UI package based on Bootstrap
-                          4 that includes the most important components and
+                          Argon is a great free UI package based on Bootstrap 4
+                          that includes the most important components and
                           features.
                         </p>
                         <div>
@@ -155,7 +152,6 @@ const Landing = (props) => {
       </main>
     </>
   );
-}
-
+};
 
 export default Landing;
