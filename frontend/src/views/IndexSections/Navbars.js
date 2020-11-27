@@ -323,54 +323,9 @@ class Navbars extends React.Component {
                   </Row>
                 </div>
                 <Nav className="ml-auto" navbar>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-facebook-square" />
-                      <span className="nav-link-inner--text d-lg-none">
-                        Facebook
-                      </span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter" />
-                      <span className="nav-link-inner--text d-lg-none">
-                        Twitter
-                      </span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-google-plus" />
-                      <span className="nav-link-inner--text d-lg-none">
-                        Google +
-                      </span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-instagram" />
-                      <span className="nav-link-inner--text d-lg-none">
-                        Instagram
-                      </span>
-                    </NavLink>
-                  </NavItem>
+                  
+                  
+                 
                 </Nav>
               </UncontrolledCollapse>
             </Container>
@@ -473,36 +428,7 @@ class Navbars extends React.Component {
                   </Row>
                 </div>
                 <Nav className="ml-auto" navbar>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-facebook-square mr-1" />
-                      <span className="nav-link-inner--text">Facebook</span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-twitter mr-1" />
-                      <span className="nav-link-inner--text">Twitter</span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <i className="fa fa-instagram mr-1" />
-                      <span className="nav-link-inner--text">Instagram</span>
-                    </NavLink>
-                  </NavItem>
+                  
                 </Nav>
               </UncontrolledCollapse>
             </Container>

@@ -62,13 +62,11 @@ class Landing extends React.Component {
                   <Row>
                     <Col lg="6">
                       <h1 className="display-3 text-white">
-                        A beautiful Design System{" "}
-                        <span>completed with examples</span>
+                        Your very own diagnostic tool{" "}
+                        
                       </h1>
                       <p className="lead text-white">
-                        The design system comes with four pre-built pages to
-                        help you get started faster. You can change the text and
-                        images and you're good to go.
+                        Just upload a picture of a Chest X-ray to get a diagnosis from our highly accurate Deep Learning Model
                       </p>
                       <div className="btn-wrapper">
                         <Button
