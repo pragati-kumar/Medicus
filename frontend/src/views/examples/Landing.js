@@ -141,7 +141,7 @@ const Landing = (props) => {
                         <CardImg
                           top
                           className="mx-auto mt-2"
-                          style={{maxWidth:"95%", maxHeight:"20%"}}
+                          style={{maxWidth:"95%", maxHeight:"300px"}}
                           src={uploadedImg}
                           alt="X-ray"
                         />
