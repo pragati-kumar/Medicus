@@ -1,0 +1,13 @@
+.card-list{
+    width: 30vw;
+    display: grid;
+    margin: 15% auto auto auto;
+    border: 2Px solid black;
+    /* grid-template-columns: 1fr 1fr; */
+}
+.upload-button{
+    width: 50%;
+    height: 50Px;
+    margin: auto;
+    font-size: 1rem;
+}
