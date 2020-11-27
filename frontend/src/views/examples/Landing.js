@@ -33,6 +33,14 @@ import Download from "../IndexSections/Download.js";
 
 const Landing = (props) => {
   const main = useRef(0);
+  const hiddenFileInput = useRef(null);
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
+  const handleChange = (event) => {
+    const fileUploaded = event.target.files[0];
+    //handle file upload here
+  };
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -82,6 +90,7 @@ const Landing = (props) => {
                       <Button
                         className="btn-white btn-icon mb-3 mb-sm-0 ml-1"
                         color="default"
+                        onClick={handleClick}
                         type="file"
                       >
                         <span className="btn-inner--icon mr-1">
@@ -89,6 +98,12 @@ const Landing = (props) => {
                         </span>
                         <span className="btn-inner--text">Upload an X-ray</span>
                       </Button>
+                      <input
+                        type="file"
+                        ref={hiddenFileInput}
+                        onChange={handleChange}
+                        style={{ display: "none" }}
+                      />
                     </div>
                   </Col>
                   <Col lg="6">
