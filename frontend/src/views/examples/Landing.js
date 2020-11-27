@@ -60,6 +60,7 @@ const Landing = (props) => {
         (uri) => {
           let imageurl = URL.createObjectURL(uri);
           setUploadedImg(imageurl);
+          console.log(imageurl)
         },
         "blob",
         200,
