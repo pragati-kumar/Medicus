@@ -75,6 +75,7 @@ def post_test():
 
 
 @app.route('/detect', methods=['GET', 'POST'])
+@cross_origin()
 def detect():
 
     if(request.method == 'GET'):
