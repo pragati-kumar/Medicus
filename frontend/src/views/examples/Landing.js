@@ -70,6 +70,7 @@ const Landing = (props) => {
 
 
   };
+  
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -164,11 +165,11 @@ const Landing = (props) => {
                           <Badge color="danger" pill className="mr-1">
                             Viral
                           </Badge>
-                          <Badge color="danger" pill className="mr-1">
-                            Bacterial
-                          </Badge>
                           <Badge color="success" pill className="mr-1">
                             Normal
+                          </Badge>
+                          <Badge color="danger" pill className="mr-1">
+                            Bacterial
                           </Badge>
                         </div>
                         <Button

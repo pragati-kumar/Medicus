@@ -73,5 +73,8 @@
     "gulp-append-prepend": "1.0.8",
     "jquery": "3.4.1",
     "typescript": "3.7.5"
+  },
+  "engines": {
+    "node": "12.16.3"
   }
 }
