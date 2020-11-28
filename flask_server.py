@@ -1,15 +1,10 @@
 from flask import Flask, request, jsonify
-from scipy.misc import imread, imresize, imsave
 import numpy as np
 import tensorflow.keras.models
 import re
-from werkzeug.utils import secure_filename
 import sys
 import os
 import base64
-import os
-import numpy as np
-import pandas as pd
 import random
 import cv2
 import matplotlib.pyplot as plt
@@ -18,21 +13,11 @@ import time
 
 import tensorflow as tf
 import tensorflow.keras.backend as K
-from tensorflow.keras.models import Model, Sequential
-from tensorflow.keras.layers import Input, Dense, Flatten, Dropout, BatchNormalization
-from tensorflow.keras.layers import Conv2D, SeparableConv2D, MaxPool2D, LeakyReLU, Activation
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
 
-from os import listdir
-from os.path import isfile, join
-from PIL import Image
-import glob
 # sys.path.append(os.path.abspath("./model"))
 #from load import *
 img_dims = 224
-model_path = 'pneumonia_full_model.h5'
+model_path = 'model/pneumonia_full_model.h5'
 
 
 def preprocess_uploaded_image(path):
@@ -50,7 +35,7 @@ def prediction(model_path, test_image):
     perc = 0.0
     if a >= 0.5:
         predict_string = "Ohh no, you might have Pneumonia."
-        perc =a
+        perc = a
     else:
         predict_string = "Congrats, you're safe."
         perc = 1.0-a
@@ -65,23 +50,17 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
 
-    return 'The Flask Server has started successfully on port 5000!'
+    return 'Welcome to our Medicus Flask Server!'
 
 
-@app.route('/query/<int:post_data>')
-def query_test(post_data):
-
-    return 'Query Returned: %d' % post_data
-
-
-@app.route('/post_test', methods=['GET', 'POST'])
-def post_test():
+@app.route('/detect', methods=['GET', 'POST'])
+def detect():
 
     if(request.method == 'GET'):
         return 'This is a post request test, use post method'
 
     if(request.method == 'POST'):
-        f = request.files['the_file']
+        f = request.files['xray']
         filename = f.filename
         epoch = str(calendar.timegm(time.strptime(
             'Jul 9, 2009 @ 20:02:58 UTC', '%b %d, %Y @ %H:%M:%S UTC')))
