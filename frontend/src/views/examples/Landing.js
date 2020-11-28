@@ -4,7 +4,7 @@
 
 */
 import React, { useEffect, useRef, useState } from "react";
-
+import axios from "axios";
 // nodejs library that concatenates classes
 import classnames from "classnames";
 
@@ -23,6 +23,7 @@ import {
   Container,
   Row,
   Col,
+  CardHeader,
 } from "reactstrap";
 import Resizer from "react-image-file-resizer";
 
@@ -40,11 +41,44 @@ const Landing = (props) => {
   const main = useRef(0);
   const hiddenFileInput = useRef(null);
   const [uploadedImg, setUploadedImg] = useState(null);
+  const [actualFile, setActualFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState({
+    prediction_key: "",
+    enum_val: -1,
+    conf: "",
+  });
   const handleClick = (event) => {
     hiddenFileInput.current.click();
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setResult({
+      prediction_key: "",
+      enum_val: -1,
+      conf: "",
+    });
+    var formData = new FormData();
+    if (actualFile) {
+      formData.append("xray", actualFile);
+      axios
+        .post("http://127.0.0.1:5000/post_test", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "Access-Control-Allow-Origin": "*",
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          setLoading(false);
+          setResult(res.data);
+        });
+    }
+  };
   const handleChange = async (event) => {
-    const actualFile = event.target.files[0];
+    setActualFile(event.target.files[0]);
     var fileInput = false;
     if (event.target.files[0]) {
       fileInput = true;
@@ -60,15 +94,13 @@ const Landing = (props) => {
         (uri) => {
           let imageurl = URL.createObjectURL(uri);
           setUploadedImg(imageurl);
-          console.log(imageurl)
+          console.log(imageurl);
         },
         "blob",
         200,
         200
       );
     }
-
-
   };
 
   useEffect(() => {
@@ -109,6 +141,7 @@ const Landing = (props) => {
                       <Button
                         className="btn-icon mb-3 mb-sm-0"
                         color="info"
+                        onClick={handleSubmit}
                         href="#"
                       >
                         <span className="btn-inner--icon mr-1">
@@ -142,43 +175,66 @@ const Landing = (props) => {
                         <CardImg
                           top
                           className="mx-auto mt-2"
-                          style={{maxWidth:"95%", maxHeight:"300px"}}
+                          style={{ maxWidth: "95%", maxHeight: "300px" }}
                           src={uploadedImg}
                           alt="X-ray"
                         />
                       ) : null}
 
+                      {result.enum_val == 1 ? (
+                        <CardHeader>
+                          <div>
+                            <Badge color="danger" pill className="mr-1">
+                              Pneumonia
+                            </Badge>
+                          </div>
+                        </CardHeader>
+                      ) : null}
+                      {result.enum_val == 0 ? (
+                        <CardHeader>
+                          <div>
+                            <Badge color="success" pill className="mr-1">
+                              Normal
+                            </Badge>
+                          </div>
+                        </CardHeader>
+                      ) : null}
+
                       <CardBody className="py-5">
-                        <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                        {/* <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
                           <i className="ni ni-check-bold" />
-                        </div>
+                        </div> */}
                         <h6 className="text-primary text-uppercase">
-                          Your X-ray Report
+                          <i className="fas fa-notes-medical"></i> Your X-ray
+                          Report
                         </h6>
                         <p className="description mt-3">
-                          Argon is a great free UI package based on Bootstrap 4
-                          that includes the most important components and
-                          features.
+                          {result.prediction_key}
                         </p>
-                        <div>
-                          <Badge color="danger" pill className="mr-1">
-                            Viral
-                          </Badge>
-                          <Badge color="danger" pill className="mr-1">
-                            Bacterial
-                          </Badge>
-                          <Badge color="success" pill className="mr-1">
-                            Normal
-                          </Badge>
-                        </div>
-                        <Button
+                        {result.prediction_key != "" ? (
+                          <p className="description mt-3">
+                            Model Confidence: {(result.conf * 100).toFixed(2)} %
+                          </p>
+                        ) : null}
+                        {loading ? (
+                          <p className="px-auto">
+                            <div
+                              class="spinner-border text-primary "
+                              role="status"
+                            >
+                              <span class="sr-only">Loading...</span>
+                            </div>
+                          </p>
+                        ) : null}
+
+                        {/* <Button
                           className="mt-4"
                           color="primary"
                           href="#pablo"
                           onClick={(e) => e.preventDefault()}
                         >
                           Learn more
-                        </Button>
+                        </Button> */}
                       </CardBody>
                     </Card>
                   </Col>
