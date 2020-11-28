@@ -36,15 +36,16 @@ def prediction(model_path, test_image):
     model = tf.keras.models.load_model(model_path)
     a = model.predict(test_image)
     perc = 0.0
-    enum=0
+    enum = 0
     if a >= 0.5:
         predict_string = "Ohh no, you might have Pneumonia."
         perc = a
-        enum=1
+        enum = 1
     else:
         predict_string = "Congrats, you're safe."
         perc = 1.0-a
-    prediction = {'prediction_key': predict_string, 'conf': float(perc), 'enum_val':enum}
+    prediction = {'prediction_key': predict_string,
+                  'conf': float(perc), 'enum_val': enum}
     # print(predict_string)
     return prediction
 
