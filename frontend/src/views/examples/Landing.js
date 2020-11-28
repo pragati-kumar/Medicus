@@ -62,7 +62,7 @@ const Landing = (props) => {
     });
     var formData = new FormData();
     if (actualFile) {
-      formData.append("the_file", actualFile);
+      formData.append("xray", actualFile);
       axios
         .post("http://127.0.0.1:5000/post_test", formData, {
           headers: {

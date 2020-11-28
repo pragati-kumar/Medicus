@@ -2,7 +2,9 @@
 
 ## Backend instructions:
 
-### Run `pip install flask`
+### To install all the requirements:
+
+- Run `pip install -r requirements.txt`
 
 ### On Windows:
 
@@ -16,4 +18,6 @@
 - [x] `export FLASK_APP=flash_server.py`
 - [x] `export FLASK_ENV=development`
 
-### Run `flask run`
+### To run the backend:
+
+- Run `flask run`
