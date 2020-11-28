@@ -4,7 +4,6 @@
 
 ### To install all the requirements:
 
-- Run `cd backend`
 - Run `pip install -r requirements.txt`
 
 ### On Windows:

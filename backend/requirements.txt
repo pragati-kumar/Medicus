@@ -1,9 +1,0 @@
-flask
-opencv-python
-tensorflow
-numpy
-pybase64
-scipy
-Keras
-regex
-matplotlib
