@@ -71,6 +71,11 @@ def query_test(post_data):
 @app.route('/post_test', methods=['GET', 'POST'])
 @cross_origin()
 def post_test():
+    return 'Welcome to our Medicus Flask Server!'
+
+
+@app.route('/detect', methods=['GET', 'POST'])
+def detect():
 
     if(request.method == 'GET'):
         return 'This is a post request test, use post method'
@@ -84,4 +89,5 @@ def post_test():
         img = preprocess_uploaded_image(
             os.getcwd() + '/uploads/' + filename+'-'+epoch)
         prediction_result = prediction(model_path, img)
+        os.remove(os.getcwd() + '/uploads/' + filename + '-'+epoch)
         return prediction_result

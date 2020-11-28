@@ -64,7 +64,7 @@ const Landing = (props) => {
     if (actualFile) {
       formData.append("xray", actualFile);
       axios
-        .post("http://127.0.0.1:5000/post_test", formData, {
+        .post(process.env.REACT_APP_API_URI, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             "Access-Control-Allow-Origin": "*",
