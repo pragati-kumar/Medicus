@@ -15,3 +15,5 @@
 - On the command line:
 - [x] `export FLASK_APP=flash_server.py`
 - [x] `export FLASK_ENV=development`
+
+### Run `flask run`
