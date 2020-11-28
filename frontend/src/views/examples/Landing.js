@@ -102,6 +102,7 @@ const Landing = (props) => {
       );
     }
   };
+  
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -211,6 +212,20 @@ const Landing = (props) => {
                         <p className="description mt-3">
                           {result.prediction_key}
                         </p>
+<<<<<<< HEAD
+                        <div>
+                          <Badge color="danger" pill className="mr-1">
+                            Viral
+                          </Badge>
+                          <Badge color="success" pill className="mr-1">
+                            Normal
+                          </Badge>
+                          <Badge color="danger" pill className="mr-1">
+                            Bacterial
+                          </Badge>
+                        </div>
+                        <Button
+=======
                         {result.prediction_key != "" ? (
                           <p className="description mt-3">
                             Model Confidence: {(result.conf * 100).toFixed(2)} %
@@ -228,6 +243,7 @@ const Landing = (props) => {
                         ) : null}
 
                         {/* <Button
+>>>>>>> 6c78a78453fefd953c45c13360e21d327adb8de3
                           className="mt-4"
                           color="primary"
                           href="#pablo"
