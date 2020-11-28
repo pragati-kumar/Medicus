@@ -16,11 +16,15 @@ import time
 import tensorflow as tf
 import tensorflow.keras.backend as K
 
+from os.path import join, dirname, realpath
+
 # sys.path.append(os.path.abspath("./model"))
 #from load import *
 
 img_dims = 224
 model_path = 'model/pneumonia_full_model.h5'
+
+UPLOADS_PATH = join(dirname(realpath(__file__)), 'uploads/')
 
 
 def preprocess_uploaded_image(path):
@@ -36,15 +40,16 @@ def prediction(model_path, test_image):
     model = tf.keras.models.load_model(model_path)
     a = model.predict(test_image)
     perc = 0.0
-    enum=0
+    enum = 0
     if a >= 0.5:
         predict_string = "Ohh no, you might have Pneumonia."
         perc = a
-        enum=1
+        enum = 1
     else:
         predict_string = "Congrats, you're safe."
         perc = 1.0-a
-    prediction = {'prediction_key': predict_string, 'conf': float(perc), 'enum_val':enum}
+    prediction = {'prediction_key': predict_string,
+                  'conf': float(perc), 'enum_val': enum}
     # print(predict_string)
     return prediction
 
@@ -85,9 +90,9 @@ def detect():
         filename = f.filename
         epoch = str(calendar.timegm(time.strptime(
             'Jul 9, 2009 @ 20:02:58 UTC', '%b %d, %Y @ %H:%M:%S UTC')))
-        f.save(os.getcwd() + '/uploads/' + filename + '-'+epoch)
+        f.save(UPLOADS_PATH + filename + '-'+epoch)
         img = preprocess_uploaded_image(
-            os.getcwd() + '/uploads/' + filename+'-'+epoch)
+            UPLOADS_PATH + filename+'-'+epoch)
         prediction_result = prediction(model_path, img)
-        os.remove(os.getcwd() + '/uploads/' + filename + '-'+epoch)
+        os.remove(UPLOADS_PATH + filename + '-'+epoch)
         return prediction_result
