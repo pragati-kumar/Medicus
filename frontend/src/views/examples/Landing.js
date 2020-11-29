@@ -137,11 +137,12 @@ const Landing = (props) => {
 											Just upload a picture of a Chest X-ray to get a diagnosis
 											from our highly accurate Deep Learning Model
 										</p>
-                    <p className="lead text-white">Medicus gives you a diagnosis which classifies your X-ray into either 
-                      a <strong>"Normal"</strong> category or a <strong>"Pneumonia"</strong> category
-                    </p>
+										<p className="lead text-white">
+											Medicus gives you a diagnosis which classifies your X-ray
+											into either a <strong>"Normal"</strong> category or a{" "}
+											<strong>"Pneumonia"</strong> category
+										</p>
 										<div className="btn-wrapper">
-											
 											<Button
 												className="btn-white btn-icon mb-3 mb-sm-0 ml-1"
 												color="default"
@@ -153,7 +154,7 @@ const Landing = (props) => {
 												</span>
 												<span className="btn-inner--text">Upload an X-ray</span>
 											</Button>
-                      <Button
+											<Button
 												className="btn-icon mb-3 mb-sm-0"
 												color="info"
 												onClick={handleSubmit}
@@ -265,6 +266,67 @@ const Landing = (props) => {
 						</div>
 					</section>
 					{/* 1st Hero Variation */}
+					<section className="section section-lg">
+						<Container>
+							<Row className="row-grid align-items-center">
+								<Col className="order-md-2" md="6">
+									<img
+										alt="..."
+										className="img-fluid floating"
+										src={require("assets/img/icons/high-precision.png")}
+									/>
+								</Col>
+								<Col className="order-md-1" md="6">
+									<div className="pr-md-5">
+										<div className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
+											<i className="fa fa-bullseye fa-2x" />
+										</div>
+										<h3>High Precision</h3>
+										<p>
+											We made several training-sets using the cross-validation
+											technique on training data through tuning parameters &
+											introducing different layers in the model architecture. We
+											chose the most stable one by comparing the results of
+											different models. Finally, Retraining the model on the
+											train test dataset given to fetch the best results.
+										</p>
+										<ul className="list-unstyled mt-5">
+											<li className="py-2">
+												<div className="d-flex align-items-center">
+													<div>
+														<Badge
+															className="badge-circle mr-3"
+															color="success"
+														>
+															<i className="ni ni-settings-gear-65" />
+														</Badge>
+													</div>
+													<div>
+														<h6 className="mb-0">Fine tuned parameters</h6>
+													</div>
+												</div>
+											</li>
+											<li className="py-2">
+												<div className="d-flex align-items-center">
+													<div>
+														<Badge
+															className="badge-circle mr-3"
+															color="success"
+														>
+															<i className="fa fa-check" />
+														</Badge>
+													</div>
+													<div>
+														<h6 className="mb-0">Cross-validated results</h6>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</Col>
+							</Row>
+						</Container>
+					</section>
 				</div>
 			</main>
 		</>
