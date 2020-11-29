@@ -21,6 +21,7 @@ import {
 	InputGroupText,
 	InputGroup,
 	Container,
+	Modal,
 	Row,
 	Col,
 	CardHeader,
@@ -43,6 +44,7 @@ const Landing = (props) => {
 	const [uploadedImg, setUploadedImg] = useState(null);
 	const [actualFile, setActualFile] = useState(null);
 	const [loading, setLoading] = useState(false);
+	const [modal_visibile, setModal] = useState(false);
 	const [result, setResult] = useState({
 		prediction_key: "",
 		enum_val: -1,
@@ -237,7 +239,10 @@ const Landing = (props) => {
 														className="mt-4"
 														color="primary"
 														href="#pablo"
-														onClick={(e) => e.preventDefault()}
+														onClick={(e) => {
+															e.preventDefault();
+															setModal(true);
+														}}
 													>
 														What's next?
 													</Button>
@@ -328,6 +333,57 @@ const Landing = (props) => {
 						</Container>
 					</section>
 				</div>
+
+				<Modal
+					className="modal-dialog-centered"
+					isOpen={modal_visibile}
+					toggle={() => setModal(!modal_visibile)}
+				>
+					<div className="modal-header">
+						<h5 className="modal-title" id="ModalLabel">
+							Based on your result's confidence value...
+						</h5>
+						<button
+							aria-label="Close"
+							className="close"
+							data-dismiss="modal"
+							type="button"
+							onClick={() => setModal(!modal_visibile)}
+						>
+							<span aria-hidden={true}>×</span>
+						</button>
+					</div>
+					<div className="modal-body">
+						<h3>
+							Confidence <span style={{ color: "#2dce89" }}>> 96%</span>
+						</h3>
+						<p>You're all set!</p>
+						<h3>
+							Confidence{" "}
+							<span style={{ color: "#11cdef" }}>between 70% and 96%</span>
+						</h3>
+						<p>
+							We advise you to take another image of the X-ray, with better
+							lighting and/or steadier camera and try to analyse that instead.
+						</p>
+						<h3>
+							Confidence <span style={{ color: "#f5365c" }}>less than 70%</span>
+						</h3>
+						<p>
+							Medicus seems to be having some trouble analysing your X ray. We
+							advise you to consult a doctor regarding the test results.
+						</p>
+					</div>
+					<div className="modal-footer">
+						<Button
+							color="primary"
+							type="button"
+							onClick={() => setModal(!modal_visibile)}
+						>
+							I understand
+						</Button>
+					</div>
+				</Modal>
 			</main>
 		</>
 	);
