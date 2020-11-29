@@ -16,11 +16,15 @@ import time
 import tensorflow as tf
 import tensorflow.keras.backend as K
 
+from os.path import join, dirname, realpath
+
 # sys.path.append(os.path.abspath("./model"))
 #from load import *
 
 img_dims = 224
 model_path = 'model/pneumonia_full_model.h5'
+
+UPLOADS_PATH = join(dirname(realpath(__file__)), 'uploads/')
 
 
 def preprocess_uploaded_image(path):
@@ -86,9 +90,9 @@ def detect():
         filename = f.filename
         epoch = str(calendar.timegm(time.strptime(
             'Jul 9, 2009 @ 20:02:58 UTC', '%b %d, %Y @ %H:%M:%S UTC')))
-        f.save(os.getcwd() + '/uploads/' + filename + '-'+epoch)
+        f.save(UPLOADS_PATH + filename + '-'+epoch)
         img = preprocess_uploaded_image(
-            os.getcwd() + '/uploads/' + filename+'-'+epoch)
+            UPLOADS_PATH + filename+'-'+epoch)
         prediction_result = prediction(model_path, img)
-        os.remove(os.getcwd() + '/uploads/' + filename + '-'+epoch)
+        os.remove(UPLOADS_PATH + filename + '-'+epoch)
         return prediction_result
