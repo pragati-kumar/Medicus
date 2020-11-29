@@ -2,6 +2,9 @@
 
 ## NOTE:- 
 To test the web app, we have included some X rays in the `X-rays-for-testing` folder 
+### Hosted at :- 
+https://medicus.vercel.app/
+
 ## Backend instructions:
 
 ### To install all the requirements:
