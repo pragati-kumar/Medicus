@@ -238,7 +238,7 @@ const Landing = (props) => {
 														href="#pablo"
 														onClick={(e) => e.preventDefault()}
 													>
-														Learn more
+														What's next?
 													</Button>
 												) : null}
 											</CardBody>
