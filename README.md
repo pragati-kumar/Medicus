@@ -1,5 +1,7 @@
 # Medicus
 
+## NOTE:- 
+To test the web app, we have included some X rays in the `X-rays-for-testing` folder 
 ## Backend instructions:
 
 ### To install all the requirements:
