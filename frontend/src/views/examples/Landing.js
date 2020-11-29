@@ -131,7 +131,7 @@ const Landing = (props) => {
 								<Row>
 									<Col lg="6" className="mb-5">
 										<h1 className="display-3 text-white">
-											Your very own diagnostic tool{" "}
+											Medicus - Your very own diagnostic tool{" "}
 										</h1>
 										<p className="lead text-white">
 											Just upload a picture of a Chest X-ray to get a diagnosis
@@ -141,17 +141,7 @@ const Landing = (props) => {
                       a <strong>"Normal"</strong> category or a <strong>"Pneumonia"</strong> category
                     </p>
 										<div className="btn-wrapper">
-											<Button
-												className="btn-icon mb-3 mb-sm-0"
-												color="info"
-												onClick={handleSubmit}
-												href="#"
-											>
-												<span className="btn-inner--icon mr-1">
-													<i className="ni ni-sound-wave" />
-												</span>
-												<span className="btn-inner--text">Get Analysis</span>
-											</Button>
+											
 											<Button
 												className="btn-white btn-icon mb-3 mb-sm-0 ml-1"
 												color="default"
@@ -162,6 +152,17 @@ const Landing = (props) => {
 													<i className="ni ni-cloud-upload-96" />
 												</span>
 												<span className="btn-inner--text">Upload an X-ray</span>
+											</Button>
+                      <Button
+												className="btn-icon mb-3 mb-sm-0"
+												color="info"
+												onClick={handleSubmit}
+												href="#"
+											>
+												<span className="btn-inner--icon mr-1">
+													<i className="ni ni-sound-wave" />
+												</span>
+												<span className="btn-inner--text">Get Analysis</span>
 											</Button>
 											<input
 												type="file"
